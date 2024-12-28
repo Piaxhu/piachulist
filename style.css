@@ -74,44 +74,44 @@ span.hardest {
     display: inline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 868px) {
     fieldset {
-        width: 80%; /* Fieldset zajmuje całą szerokość ekranu */
-        font-size: 18px; /* Zwiększona czcionka */
-        height: 85px; /* Automatyczna wysokość */
-        margin-left: 0; /* Brak marginesu */
-        padding: 20px; /* Dodanie odstępów wewnątrz */
+        width: 88%;
+        font-size: 18px;
+        height: 85px;
+        margin-left: -20px;
+        padding: 20px;
     }
 
     .piachulist {
         position: relative;
-        right: 0; /* Dostosowanie pozycji */
+        right: 0;
     }
 
     img {
-        width: 35%; /* Obrazki dopasowane do szerokości */
+        width: 35%;
         height: auto;
     }
 
     img.corner {
-        width: 30px; /* Mniejsza ikona w rogu */
+        width: 30px;
         right: 15px;
         opacity: 0.75;
     }
 
     img.logo {
-        width: 90%; /* Logo zajmuje 90% szerokości */
-        margin-left: 5%; /* Wycentrowanie */
+        width: 90%;
+        margin-left: 5%;
     }
 
     span.hardest {
-        font-size: 10px; /* Większy tekst dla czytelności */
+        font-size: 10px;
         display:table-row;
     }
 
     div {
-        margin-left: 25px; /* Brak marginesów */
-        flex-direction: column; /* Zachowanie układu kolumnowego */
+        margin-left: 25px;
+        flex-direction: column;
     }
 
 }
