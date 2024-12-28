@@ -52,6 +52,12 @@ img.logo {
     margin-left: 237px;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+}
+
 b {
     color: #E5E5E5;
 }
@@ -65,4 +71,47 @@ span.hardest {
     color: #f1d886;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 20px;
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    fieldset {
+        width: 80%; /* Fieldset zajmuje całą szerokość ekranu */
+        font-size: 18px; /* Zwiększona czcionka */
+        height: 85px; /* Automatyczna wysokość */
+        margin-left: 0; /* Brak marginesu */
+        padding: 20px; /* Dodanie odstępów wewnątrz */
+    }
+
+    .piachulist {
+        position: relative;
+        right: 0; /* Dostosowanie pozycji */
+    }
+
+    img {
+        width: 35%; /* Obrazki dopasowane do szerokości */
+        height: auto;
+    }
+
+    img.corner {
+        width: 30px; /* Mniejsza ikona w rogu */
+        right: 15px;
+        opacity: 0.75;
+    }
+
+    img.logo {
+        width: 90%; /* Logo zajmuje 90% szerokości */
+        margin-left: 5%; /* Wycentrowanie */
+    }
+
+    span.hardest {
+        font-size: 10px; /* Większy tekst dla czytelności */
+        display:table-row;
+    }
+
+    div {
+        margin-left: 25px; /* Brak marginesów */
+        flex-direction: column; /* Zachowanie układu kolumnowego */
+    }
+
 }
