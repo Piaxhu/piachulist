@@ -21,7 +21,7 @@ fieldset {
     background-color:#202020;
     position: relative;
     }
-    
+
 ol {
     counter-reset: item;
     list-style: none;
@@ -84,6 +84,11 @@ span.hardest {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 20px;
     display: inline;
+}
+
+span.tytul {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 button.unselected {
