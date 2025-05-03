@@ -1,0 +1,589 @@
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f2f2f6;
+    overflow-x: hidden;
+}
+
+.header {
+    gap: 50px;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    width: 670px;
+    margin: auto;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    font-family: montserrat;
+}
+
+.nav-top { /* Przycisk nav baru */
+    color: #eaeaea;
+    font-size: 24px;
+    font-weight: Medium;
+    text-decoration: none;
+}
+
+
+.opis { /* SZARY MAŁY TEKST NA RED TLE MONTSERRAT DO OPISÓW */
+    position: absolute;
+    font-size: 24px;
+    font-family: Montserrat;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.opis2 { /* SZARY MAŁY TEKST NA #FFF TLE MONTSERRAT DO OPISÓW */
+    position: absolute;
+    font-size: 20px;
+    font-family: Montserrat;
+    color: #606070;
+    font-weight: 500;
+}
+
+.golden {
+    position: absolute;
+    font-size: 20px;
+    color: #FFAA00;
+    font-family: DM Serif Display;
+}
+
+.naglowek-sekcji { /* SŁOWA POWITALNE PRZED SEKCJĄ */
+    color: #a0a0a0;
+    font-size: 30px;
+    position: absolute;
+    font-family: DM Serif Display;
+    text-align: center;
+}
+
+.tytul-sekcji { /* DUZY GŁÓWNY TYTUŁ SEKCJI */
+    color: #252530;
+    position: absolute;
+    font-size: 100px;
+    font-family: DM Serif Display;
+    text-align: center;
+}
+
+.opis-sekcji { /* WYCENTROWANY OPIS SEKCJI */
+    color: #606070;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+}
+
+.glowny-text {
+    top: 170px;
+    left: 60px;
+    color: #fff;
+    position: absolute;
+    font-weight: 900;
+    font-size: 200px;
+    font-style: Black;
+    font-family: Montserrat;
+}
+
+.logo {
+    top: 32px;
+    left: 70px;
+    position: absolute;
+    font-size: 30px;
+    font-family: DM Serif Display;
+    color: #fff !important;
+}
+
+.logo2 {
+    top: 2634px;
+    left: 1252px;
+    position: absolute;
+    font-size: 40px;
+    font-family: DM Serif Display;
+    color: #d70429;
+}
+
+.wstep-l { top: 420px; left: 70px; }
+
+.wstep-r {
+    top: 420px;
+    right: 45px;
+    text-align: right;
+}
+
+.red-button {
+    position: absolute;
+    align-items: center;
+    border: 2px solid #fff;
+    background-color: #d70429;
+    width: 300px;
+    height: 65px;
+    border-radius: 200px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.przycisk1 { top: 660px; left: 70px; }
+.przycisk2 { top: 690px; right: 45px; }
+.naglowek1 { top: 1320px; left: 870px; }
+.naglowek2 { top: 2900px; left: 870px; }
+.naglowek3 { top: 6250px; left: 870px; }
+.naglowek4 { top: 7750px; left: 870px; }
+.tytul1 { top: 1340px; left: 820px; }
+.tytul2 { top: 2920px; left: 840px; }
+.tytul3 { top: 6270px; left: 770px; }
+.tytul4 { top: 7770px; left: 810px; }
+
+.red-title {
+    color: #d70429;
+    font-size: 40px;
+    font-family: DM Serif Display;
+    border: 2px solid #c0c0c0;
+    border-width: 0 0 2px;
+    position: absolute;
+    width: 350px;
+    padding: 10px 0;
+}
+
+.red1 { top: 1650px; left: 75px; }
+.red2 { top: 2020px; left: 75px; }
+.red3 { top: 1650px; right: 75px; text-align: right; }
+.red4 { top: 2020px; right: 75px; text-align: right; }
+.red-opis1 { top: 1730px; left: 75px; }
+.red-opis2 { top: 2110px; left: 75px; }
+.red-opis3 { top: 1730px; right: 75px; text-align: right; }
+.red-opis4 { top: 2110px; right: 75px; text-align: right; }
+
+.opis-lokalu {
+    color: #a0a0a0;
+    width: 950px;
+    font-size: 16px;
+    font-family: DM Serif Display;
+    padding-bottom: 40px;
+    left: 493px;
+    top: 2520px;
+    position: absolute;
+    border: 2px solid #c0c0c0;
+    border-width: 0 0 1px;
+}
+
+.kucharze {
+    top: 2630px;
+    left: 610px;
+    color: #a0a0a0;
+    font-family: DM Serif Display;
+    font-size: 16px;
+    position: absolute; 
+}
+
+.kucharz1, .kucharz2, .kucharz3 {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #fff;
+    position: absolute;
+}
+
+.kucharz1 { top: 2642px; left: 490px; }
+.kucharz2 { top: 2642px; left: 520px; }
+.kucharz3 { top: 2642px; left: 550px; }
+
+.rating-lokalu {
+    top: 2647px;
+    left: 895px;
+    width: 32px;
+    height: 30px;
+    position: absolute;
+}
+
+.rating-liczba {
+    color: #d70429;
+    font-size: 40px;
+    font-family: DM Serif Display;
+    position: absolute;
+    top: 2635px;
+    left: 940px;
+}
+
+.sekcja1 { top: 3080px; left: 515px; }
+.sekcja2 { top: 6430px; left: 505px; }
+.sekcja3 { top: 7930px; left: 530px; }
+
+.menu { /* Cały auto-layout konkretnej pizzy */
+    width: 500px;
+    height: 580px;
+    position: absolute;
+    display: flex;
+    border: 2px solid #c0c0c0;
+    background-color: #f2f2f6;
+    text-align: center;
+}
+
+.menu-image { /* Zdjecie pizzy */
+    width: auto;
+    height: 295px;
+    align-self: stretch;
+}
+
+.menu-tytul { /* Nazwa pizzy */
+    color: #000;
+    font-size: 30px;
+    font-family: DM Serif Display;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 320px;
+}
+
+.menu-opis { /* Opis pizzy */
+    position: absolute;
+    text-align: center;
+    color: #606070;
+    font-size: 14px;
+    font-family: Montserrat;
+    font-weight: 500;
+    top: 405px;
+    width: 480px;
+}
+
+.menu-rating { /* Ocena pizzy */
+    width: 88px;
+    height: 15px;
+    position: absolute;
+    top: 375px;
+    left: 205px;
+}
+
+.menu-cena { /* Tekst ceny */
+  color: #d70429;
+  font-size: 30px;
+  text-align: center;
+  font-family: DM Serif Display; 
+  width: 120px;
+}
+
+.menu-rozmiar { /* Tekst rozmiar */
+    color: #606070;
+    font-size: 14px;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+.cena { /* Cena + rozmiar */
+    display:  flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.all-prices { /* Auto-layout z trzema cenami */
+   gap: 20px;
+   width: 400px;
+   display: flex;
+   position: absolute;
+   top: 500px;
+   left: 50px;
+}
+
+.menu1 { top: 3330px; left: 208px; }
+.menu2 { top: 3330px; left: 708px; }
+.menu3 { top: 3330px; left: 1208px; }
+.menu4 { top: 3912px; left: 208px; }
+.menu5 { top: 3912px; left: 708px; }
+.menu6 { top: 3912px; left: 1208px; }
+.menu7 { top: 4494px; left: 208px; }
+.menu8 { top: 4494px; left: 708px; }
+.menu9 { top: 4494px; left: 1208px; }
+
+.recommended-div { /* Cały auto-layout najchetniej wybieranej */
+    top: 5500px;
+    left: 720px;
+    position: absolute;
+    width: 700px;
+}
+
+.PoRazSetnyToGownoPisze { /* Najchetniej wybierana */
+   color: #a0a0a0;
+   position: absolute;
+   font-size: 20px;
+   font-family: DM Serif Display;
+   width: 100%;
+}
+
+.JakaPizza { /* Nazwa pizzy */
+    color: #fff;
+    font-size: 70px;
+    font-family: DM Serif Display;
+    position: absolute;
+    top: 15px;
+}
+
+.znowu-rating { /* Ocena pizzy */
+    width: 88px;
+    height: 16px;
+    position: absolute;
+    top: 125px;
+}
+
+.znowu-ceny { /* Auto-layout z trzema cenami */
+   gap: 0px;
+   width: 550px;
+   display: flex;
+   position: absolute;
+   top: 280px;
+   left: -20px;
+}
+
+.polecane-rozmiar {
+    color: #d0d0d0;
+    font-size: 20px;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+.polecane-cena {
+    color: #d70429;
+    font-size: 40px;
+    text-align: center;
+    font-family: DM Serif Display;
+    width: 500px;
+}
+
+.wieksza-cena {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.KonczaMiSieNazwy { /* Opis pizzy */
+    position: absolute;
+    top: 150px;
+    color: #d0d0d0;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 20px;
+    left: -20px;
+}
+
+.black-button {
+    border: 2px solid #fff;
+    background-color: #0f0f11;
+    border-radius: 200px;
+    width: 320px;
+    height: 65px;
+    top: 420px;
+    position: absolute;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    
+    color: #fff;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+.odnosnik {
+    color: #d70429;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.galeria-wiecej {
+    font-family: Montserrat;
+    font-size: 20px;
+    position: absolute;
+    top: 7550px;
+    left: 770px;
+}
+
+.map {
+    width: 1000px;
+    height: 540px;
+    border: 2px solid #c0c0c0;
+    position: absolute;
+    top: 8100px;
+    left: 200px;
+}
+
+.lokal-tytul1 {
+    font-family: DM Serif Display;
+    color: #d70429;
+    font-size: 32px;
+    position: absolute;
+    top: 8100px;
+    left: 1240px;
+}
+
+.lokal-tytul2 {
+    font-family: DM Serif Display;
+    color: #d70429;
+    font-size: 32px;
+    position: absolute;
+    top: 8550px;
+    left: 1240px;
+}
+
+.dni-otwarcia {
+    position: absolute;
+    top: 8190px;
+    left: 1240px;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+
+    font-family: Montserrat;
+    color: #606070;
+    font-size: 24px;
+    list-style-type: none;
+    font-weight: 500;
+}
+
+.godziny-otwarcia {
+    position: absolute;
+    top: 8190px;
+    right: 70px;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+
+    font-family: Montserrat;
+    color: #252530;
+    font-size: 24px;
+    list-style-type: none;
+    font-weight: 700;
+    text-align: right;
+}
+
+.lokal-lokalizacja {
+    font-family: Montserrat;
+    color: #606070;
+    font-size: 24px;
+    font-weight: 500;
+    top: 8610px;
+    left: 1240px;
+    position: absolute;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: -7840px;
+    width: 100%;
+}
+
+.footer-logo {
+    font-family: DM Serif Display;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
+.glaze {
+    font-family: Montserrat;
+    font-size: 16px;
+    top: 90px;
+    left: 350px;
+    position: absolute;
+    color: #d0d0d0;
+}
+
+.footer-zakladka {
+    position: absolute;
+    top: 105px;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-desc {
+    color: #e0e0e0;
+    font-size: 16px;
+    font-family: Montserrat;
+    position: absolute;
+}
+
+.zakladka1 { left: 940px;}
+.zakladka2 { left: 1350px;}
+.zakladka3 { left: 1700px;}
+.desc1 { left: 940px; top: 155px;}
+.desc2 { left: 940px; top: 190px;}
+.desc3 { left: 1350px; top: 155px;}
+.desc4 { left: 1350px; top: 190px;}
+.desc5 { left: 1700px; top: 155px;}
+.desc6 { left: 1700px; top: 190px;}
+
+.copyright {
+    font-size: 12px;
+    font-family: Montserrat;
+    color: #d0d0d0;
+    position: absolute;
+    left: 50px;
+    top: 265px;
+}
+
+.policy {
+    position: absolute;
+    top: 265px;
+    right: 70px;
+    gap: 30px;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    
+    font-size: 12px;
+    font-family: Montserrat;
+    color: #d0d0d0;
+}
+
+.media {
+    position: absolute;
+    top: 160px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    gap: 12px;
+    display: flex;
+}
+
+.header-wysuniety {
+    gap: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 65px;
+    margin: auto;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
+    background-color: rgba(215, 4, 43, 0.75);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+/*     border-radius: 0px 0px 20px 20px; */
+    backdrop-filter: blur(10px);
+}
+  
+.header-wysuniety.visible {
+    opacity: 1;
+    transform: none;
+}

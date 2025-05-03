@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="styl1.css">
+    <link rel="stylesheet" href="styl2.css">
+    <link rel="stylesheet" href="przejscia.css">
+    <link rel="stylesheet" href="images.css">
+    <title>Carterrina</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&amp;display=swap" data-tag="font"/>
+</head>
+<body>
+<script>
+window.addEventListener('scroll', () => {
+  const element = document.querySelector('.header-wysuniety');
+  if (window.scrollY > 400) {
+    element.classList.add('visible');
+  } else {
+    element.classList.remove('visible');
+  }
+});
+</script>
+
+<img src="images/rezerwuj-bg.png" class="rezerwacja2-css2"/>
+<img src="images/red-bg1.png" class="red-bg1-css2"/>
+<img src="images/rezerwacja.png" class="rezerwacja-css2"/>
+<span class="glowny-text-css2">ZAREZERWUJ STOLIK</span>
+
+<pre class="rezerwuj-tekst1">
+Boisz sie że cały lokal będzie zatłoczony? Nie bój nic! Zarezerwuj stolik na naszej 
+stronie by zapobiec rozczarowaniom na miejscu.</pre>
+
+<pre class="rezerwuj-tekst1" style="font-style: italic; top: 400px">
+Koszt rezerwacji stolika wynosi 10zł, z prośbą o odwołanie rezerwacji proszę pisać 
+na nasz e-mail.</pre>
+
+<span id="galeria" class="naglowek-sekcji-css2">czas na ...</span>
+<span class="tytul-sekcji-css2">REZERWACJA</span>
+
+<span class="tytul-rezerwacji1">Dane osobowe</span>
+
+<label for="imie" class="imie-label">Imię:</label>
+<input type="text" class="imie-input" id="imie" placeholder="Twoje imię:">
+
+<label for="nazwisko" class="nazwisko-label">Nazwisko:</label>
+<input type="text" class="nazwisko-input" id="nazwisko" placeholder="Twoje nazwisko:">
+
+<label for="telefon" class="telefon-label">Numer telefonu:</label>
+<input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="telefon-input" id="telefon" placeholder="XXX XXX XXX">
+
+<label for="mail" class="mail-label">E-mail:</label>
+<input type="emial" class="mail-input" id="mail" placeholder="example@outlook.com">
+
+<label for="stolik" class="stolik-label">Rozmiar stolika:</label>
+<select placeholder="Stolik" id="stolik" style="height: 50px; width: 1025px;">
+    <option>1 osobowy</option>
+    <option>2 osobowy</option>
+    <option>4 osobowy</option>
+    <option>8 osobowy</option>
+</select>
+
+<span class="tytul-rezerwacji1" style="top: 1830px !important;">Płatność</span>
+
+<label for="karta" class="karta-label">Numer karty płatniczej:</label>
+<input type="number" class="karta-input" id="karta" placeholder="XXXX XXXX XXXX XXXX">
+
+<label for="data" class="data-label">Data wygaśnięcia:</label>
+<input type="data" id="data" class="data-input" maxlength="5" pattern="(0[1-9]|1[0-2])/[0-9]{2}" placeholder="MM/RR">
+
+<label for="cvc" class="cvc-label">CVC:</label>
+<input type="number" id="cvc" class="cvc-input" maxlength="3" pattern="(0[1-9]|1[0-2])/[0-9]{2}" placeholder="XXX">
+
+<span class="price">Koszt: <b>10.00 zł</b></span>
+
+<button class="book-button">Potwierdź rezerwacje</button>
+
+<header>
+    <a id="home" class="logo" href="pizzeria.html" style="text-decoration: none;">Carterrina</a>
+    <div class="header">
+    <a class="nav-top" href="pizzeria.html#o_nas">O nas</a>
+    <a class="nav-top" href="pizzeria.html#menu">Menu</a>
+    <a class="nav-top" href="pizzeria.html#galeria">Galeria</a>
+    <a class="nav-top" href="pizzeria.html#lokal">Lokal</a>
+    <a class="nav-top">Rezerwacja</a>
+    </div>
+</header>
+<footer>
+<img src="images/stopka.png" class="footer-image">
+
+<span class="footer-logo">Carterrina</span>
+<pre class="glaze">
+Nasza strona powstała przy współpracy z najlepszym
+UX/UI Designerem w całej szkole, Jakubem Piaseckim.</pre>
+
+<span class="footer-zakladka zakladka1">Odwiedź nas</span>
+<span class="footer-desc desc1">ul. Sienkiewicza 34a, 25-351</span>
+<span class="footer-desc desc2">Kielce, Świętokrzyskie, Polska</span>
+
+<span class="footer-zakladka zakladka2">Kontakt</span>
+<span class="footer-desc desc3">+48 73 567 50 21</span>
+<span class="footer-desc desc4">carterrina.kielce@gmail.com</span>
+
+<span class="footer-zakladka zakladka3">Partnerzy</span>
+<span class="footer-desc desc5">Jakub Piasecki</span>
+<span class="footer-desc desc6">Anna Dubik</span>
+
+<div class="policy">
+<li>Terms & Conditions</li>
+<li>Privacy Policy</li>
+<li>Cookies</li>
+<li>Refunds</li>
+<li>License</li>
+</div>
+
+<div class="media">
+  <a target="_blank" href="https://www.behance.net/piaseckijakub"><img src="vectors/behance.svg" class="media1"></a>
+  <a target="_blank" href="https://www.instagram.com/p1axhu/"><img src="vectors/instagram.svg" class="media2"></a>
+  <a target="_blank" href="https://www.facebook.com/?locale=pl_PL"><img src="vectors/facebook.svg" class="media3"></a>
+  <a target="_blank" href=""><img src="vectors/figma.svg" class="media4"></a>
+</div>
+
+<span class="copyright">Copyright 2025 © Jakub Piasecki</span>
+</footer>
+
+<div class="header-wysuniety">
+    <a href="pizzeria.html" class="logo" style="top: 15px; text-decoration: none;">Carterrina</a>
+    <div class="header" style="top: 20px;">
+    <a class="nav-top" href="#o_nas">O nas</a>
+    <a class="nav-top" href="#menu">Menu</a>
+    <a class="nav-top" href="#galeria">Galeria</a>
+    <a class="nav-top" href="#lokal">Lokal</a>
+    <a class="nav-top" href="#">Rezerwacja</a>
+    </div>
+</div>
+
+</body>
+</html>

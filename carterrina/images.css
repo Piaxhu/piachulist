@@ -1,0 +1,127 @@
+.red-bg1 {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 1080px;
+    position: absolute;
+}
+
+.white-bg {
+    top: 980px;
+    left: 0px;
+    width: 100%;
+    height: 1845px;
+    position: absolute;
+}
+
+.glowna-pizza {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 300px;
+    left: 530px;
+    transform: translate(-50%);
+    filter: drop-shadow( 10px 40px 40px rgba(0, 0, 0, 0.5));
+    background-image: url(images/glowna_pizza.png);
+    background-size: cover;
+}
+
+.o_nas {
+    top: 1560px;
+    left: 650px;
+    width: 625px;
+    height: 868px;
+    position: absolute;
+}
+
+.pizza_bok {
+    top: 2462px;
+    left: -40px;
+    width: 260px;
+    height: 432px;
+    position: absolute;
+}
+
+.pizza_bok2 {
+    top: 2490px;
+    right: 0px;
+    width: 230px;
+    height: 360px;
+    position: absolute;
+}
+
+.cola {
+    top: 2530px;
+    right: 100px;
+    width: 210px;
+    height: 280px;
+    position: absolute;
+}
+
+.basil1 {
+    top: 2560px;
+    left: 110px;
+    width: 210px;
+    height: 280px;
+    position: absolute;
+}
+
+.basil2 {
+    top: 2380px;
+    left: 0px;
+    width: 210px;
+    height: 280px;
+    position: absolute;
+}
+
+.menu_bok {
+    top: 3285px;
+    left: 0px;
+    width: 100px;
+    height: 1800px;
+    position: absolute;
+}
+
+.menu_bok2 {
+    top: 3285px;
+    right: 0px;
+    width: 100px;
+    height: 1800px;
+    position: absolute;
+}
+
+.recommended {
+    position: absolute;
+    top: 5350px;
+    width: 100%;
+    left: 0;
+}
+
+.recommended-image {
+    position: absolute;
+    top: 5475px;
+    width: 550px;
+    height: 550px;
+    left: 100px;
+}
+
+.galeria1, .galeria2, .galeria3, .galeria-mockup, .galeria4, .galeria5, .galeria6 {
+    position: absolute;
+    border: 2px solid #c0c0c0;
+    height: 280px;
+}
+
+.galeria1 { left: 208px; top: 6620px; width: 1000px; }
+.galeria2 { left: 1230px; top: 6620px; width: 475px; }
+.galeria3 { left: 208px; top: 6920px; width: 495px; }
+.galeria-mockup { left: 721px; top: 6920px; width: 488px; }
+.galeria4 { left: 1230px; top: 6920px; width: 475px; }
+.galeria5 { left: 208px; top: 7220px; width: 738px; }
+.galeria6 { left: 964px; top: 7220px; width: 740px; }
+
+.footer-image {
+    width: 100%;
+    height: 309px;
+    position: absolute;
+    left: 0;
+}

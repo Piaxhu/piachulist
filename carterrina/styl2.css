@@ -1,0 +1,150 @@
+.red-bg1-css2 {
+    top: -400px;
+    left: 0px;
+    width: 100%;
+    height: 1080px;
+    position: absolute;
+}
+
+.glowny-text-css2 {
+    top: 170px;
+    left: 60px;
+    color: #fff;
+    position: absolute;
+    font-weight: 900;
+    font-size: 100px;
+    font-style: Black;
+    font-family: Montserrat;
+}
+
+.rezerwacja-css2 {
+    width: 500px;
+    height: 670px;
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    filter: drop-shadow( 10px 40px 40px rgba(0, 0, 0, 0.5));
+}
+
+.rezerwuj-tekst1 {
+    font-family: Montserrat;
+    font-size: 24px;
+    color: #e0e0e0;
+    position: absolute;
+    top: 300px;
+    left: 60px;
+}
+
+.rezerwacja2-css2 {
+    position: absolute;
+    left: 250px;
+    top: 600px;
+    width: 1390px;
+    height: 1950px;
+}
+
+footer {
+    top: 2400px !important;
+    bottom: 0px !important;
+}
+
+.tytul-sekcji-css2 {
+    color: #fff;
+    position: absolute;
+    font-size: 100px;
+    font-family: DM Serif Display;
+    text-align: center;
+    top: 800px;
+    left: 640px;
+}
+
+.naglowek-sekcji-css2 {
+    color: #a0a0a0;
+    font-size: 30px;
+    position: absolute;
+    font-family: DM Serif Display;
+    text-align: center;
+    top: 780px;
+    left: 880px;
+}
+
+.tytul-rezerwacji1 {
+    font-family: DM Serif Display;
+    font-size: 40px;
+    position: absolute;
+    top: 1000px;
+    left: 450px;
+    color: #fff;
+}
+
+input, select {
+    position: absolute;
+    width: 1000px;
+    height: 45px;
+    left: 450px;
+    border: 2px solid #4D4D4D;
+    border-radius: 12px;
+    background-color: #0F0F11;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 20px;
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+label {
+    position: absolute;
+    color: #fff;
+    left: 450px;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.imie-label { top: 1100px; }
+.imie-input { top: 1140px; }
+.nazwisko-label { top: 1240px; }
+.nazwisko-input { top: 1280px; }
+.telefon-label { top: 1380px; }
+.telefon-input { top: 1420px; }
+.mail-label { top: 1520px; }
+.mail-input { top: 1560px; }
+.stolik-label { top: 1660px; }
+#stolik { top: 1700px; }
+.karta-label { top: 1930px; }
+.karta-input { top: 1970px; }
+.data-label { top: 2070px; }
+.data-input { top: 2110px; }
+.cvc-label { top: 2070px; left: 980px; }
+.cvc-input { top: 2110px; left: 980px; }
+
+.data-input, .cvc-input {
+    width: 475px !important;
+}
+
+.book-button {
+    position: absolute;
+    align-items: center;
+    border: 2px solid #fff;
+    background-color: #0F0F11;
+    width: 500px;
+    height: 65px;
+    border-radius: 200px;
+    top: 2280px;
+    left: 700px;
+    transition: all 0.3s ease;
+
+    color: #fff;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 700;
+}
+
+.price {
+    position: absolute;
+    top: 2200px;
+    left: 450px;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 24px;
+}
