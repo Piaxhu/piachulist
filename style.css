@@ -160,11 +160,13 @@ button.selected {
 
 @media (max-width: 868px) {
     body {
-        padding-left: 20px;
+        padding-left: -600px;
+        position: absolute;
+        left: 0 !important;
     }
     
     fieldset {
-        width: 84%;
+        width: 85%;
         font-size: 18px;
         height: 85px;
         padding: 20px;
@@ -179,9 +181,10 @@ button.selected {
         display: none;
     }
 
-    img {
-        width: 35%;
+    .thumbnail {
+        width: 100%;
         height: auto;
+        display: block;
     }
 
     img.corner {
