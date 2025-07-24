@@ -7,9 +7,9 @@
 }
 
 body {
-        background-color: #101010;
-        padding-left: 250px;
-    }
+    background-color: #101010;
+    margin-left: 500px;
+}
 
 fieldset {
     border: dashed #454545 2px;
@@ -17,21 +17,20 @@ fieldset {
     display: flex; 
     align-items: center; 
     height: 120px; 
-    width:680px; 
+    width:800px; 
     background-color:#202020;
     position: relative;
-    }
+}
 
 ol {
     counter-reset: item;
     list-style: none;
     padding: 0px;
-    }
+}
     
 ol li::before {
     counter-increment: item;
     content: "#" counter(item);
-
 }
 
 div {
@@ -56,10 +55,34 @@ img.logo {
     height: 40px;
 }
 
+img.left-deco, img.right-deco {
+    position: fixed;
+    margin-top: -15px;
+    height: 105%;
+    width: 420px;
+}
+
+img.left-deco { margin-left: -600px; }
+img.right-deco { margin-left: 1100px; }
+
 a {
     text-decoration: none;
     color: inherit;
     cursor: default;
+}
+
+.thumbnail {
+    width: auto;
+    height: 100%;
+    padding-right: 220px;
+}
+
+.thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 143px;
 }
 
 b {
@@ -110,7 +133,7 @@ button.unselected {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 351px;
+    width: 411px;
 }
 
 button.selected {
@@ -132,7 +155,7 @@ button.selected {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 351px;
+    width: 411px;
 }
 
 @media (max-width: 868px) {
@@ -150,6 +173,10 @@ button.selected {
     .piachulist {
         position: relative;
         right: 0;
+    }
+
+    img.left-deco , img.right-deco {
+        display: none;
     }
 
     img {
