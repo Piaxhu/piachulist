@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piachulist — Admin</title><link rel="stylesheet" href="style.css"><link rel="shortcut icon" href="icon.png"/></head>
+<body data-page="admin">
+<header class="top"><a class="brand" href="list.html"><img src="new_piachulist.png" alt="PIACHULIST"></a>
+<nav><a href="list.html">Main List</a><a href="progress.html">Progress</a><a href="changelog.html">Changelog</a></nav></header>
+<main class="admin">
+<section class="hero"><p class="eyebrow">Panel admina</p><h1>Zmień <span>listę.</span></h1>
+<p class="lead">Ta strona niczego nie zapisuje sama. Robisz zmiany, kopiujesz gotowy <code>data.js</code>, wklejasz go do repo, potem <code>git commit</code> i <code>git push</code>.</p></section>
+<div class="panel">
+  <div class="chips" id="kind"><button data-k="add" class="on">＋ Dodaj poziom</button><button data-k="move">⇅ Przesuń poziom</button><button data-k="edit">✎ Edytuj poziom</button><button data-k="remove">✕ Usuń poziom</button></div>
+  <div class="form">
+    <label data-for="add move remove">Data <input id="date" type="date"></label>
+    <div data-for="move remove edit" hidden><label>Poziom <select id="lvl"></select></label></div>
+    <div data-for="add edit"><label>Nazwa <input id="name"></label><label>Twórca <input id="creator"></label>
+      <label>Trudność <select id="diff"></select></label><label>Miniatura (URL lub thumbnails/plik.png) <input id="thumb"></label>
+      <label>Link do przejścia (opcjonalnie) <input id="link"></label>
+      <label data-for="edit" style="display:flex;align-items:center;gap:8px"><input id="hard" type="checkbox" style="width:auto"> Oznacz jako 🥇 HARDEST</label></div>
+    <div data-for="add move"><label>Miejsce (#) <input id="pos" type="number" min="1"></label></div>
+    <button id="apply" class="go" type="button">Zastosuj zmianę</button><p id="msg" class="msg"></p>
+  </div>
+</div>
+<div class="panel"><h3>Zmiany w tej sesji <button id="undo" type="button">↶ Cofnij ostatnią</button></h3><div id="pending" class="pending"></div></div>
+<div class="panel"><h3>Nowy data.js
+  <span><button id="vsc" type="button" title="Otwiera data.js w VS Code (tylko gdy admin.html jest otwarty z dysku)">Otwórz w VS Code</button> <button id="copy" type="button">Kopiuj</button> <button id="dl" type="button">Pobierz</button></span></h3>
+  <textarea id="out" readonly rows="10"></textarea><p id="msg2" class="msg"></p></div>
+</main>
+<script src="data.js"></script><script src="shared.js"></script><script src="admin.js"></script>
+</body></html>
