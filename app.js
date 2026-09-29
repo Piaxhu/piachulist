@@ -4,13 +4,18 @@ const listEl = $("#list"), page = document.body.dataset.page;
 const hist = id => CHANGELOG.filter(e => e.id === id);
 
 if (page === "progress") {
-  listEl.innerHTML = PROGRESS.map(p => `
+  const pct = b => { const t = String(b).replace(/%/g, "").trim(); return /^\d/.test(t) ? t + "%" : t; };
+  const range = b => { const m = String(b).match(/^\s*(\d+)\s*[-–]\s*(\d+)/); if (m) return [+m[1], +m[2] - +m[1]]; const n = parseFloat(b); return isNaN(n) ? null : [0, n]; };
+  listEl.innerHTML = PROGRESS.map(p => {
+    const r = p.best != null && p.best !== "" ? range(p.best) : null;
+    return `
     <article class="card prog" style="--c:#c04bd6"><div class="main">
-      <div class="th"><img src="${esc(p.thumb)}" alt="" ${IMG}></div>
+      <div class="th"><img src="${esc(p.thumb || "")}" alt="" ${IMG}></div>
       <div class="info"><h3>${esc(p.name)}</h3><p>by ${esc(p.creator)}</p>
-        <div class="bar"><i style="width:${p.best}%"></i></div>
-        <p class="runs"><b>${p.best}%</b> best · runy: ${esc(p.runs)}</p></div>
-      <div class="badge est"><small>Estimated</small><b>${esc(p.est)}</b></div></div></article>`).join("");
+        ${r ? `<div class="bar"><i style="margin-left:${r[0]}%;width:${r[1]}%"></i></div>` : ""}
+        <p class="runs">${p.best != null && p.best !== "" ? `<b>${esc(pct(p.best))}</b> best` : ""}${p.runs ? ` · runy: ${esc(p.runs)}` : ""}</p></div>
+      ${p.est ? `<div class="badge est"><small>Estimated</small><b>${esc(p.est)}</b></div>` : ""}</div></article>`;
+  }).join("") || '<p class="empty">Brak poziomów w trakcie.</p>';
 } else if (page === "changelog") {
   let t = "all";
   const draw = () => {
@@ -92,4 +97,8 @@ if (page === "progress") {
     el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
   };
   render();
+  const up = $("#totop");
+  const onScroll = () => up.classList.toggle("show", window.scrollY > 500);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  up.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 }

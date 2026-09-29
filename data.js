@@ -38,7 +38,7 @@ const LEVELS = [
   { id:"red-haze-almondy", name:"Red HazE", creator:"Almondy", diff:"easy", thumb:"https://i.ytimg.com/vi/rk2QK-GQCdE/maxresdefault.jpg" },
   { id:"way-of-the-darkness", name:"Way of the Darkness", creator:"IIINePtunEIII", diff:"medium", thumb:"https://i.ytimg.com/vi/dOJhARl5H30/maxresdefault.jpg" },
   { id:"nautilus", name:"Nautilus", creator:"TheTechniTeam", diff:"easy", thumb:"thumbnails/Nautulis.png" },
-  { id:"shitty-quantumprocessing", name:"Shitty QuantumProcessing", creator:"D4M5", diff:"unrated", thumb:"thumbnails/quantum_processing.png" },
+  { id:"shitty-quantumprocessing", name:"Shitty Quantum Processing", creator:"D4M5", diff:"unrated", thumb:"thumbnails/quantum_processing.png" },
   { id:"shitty-vsc-2", name:"Shitty VSC 2", creator:"evvGeson", diff:"unrated", thumb:"thumbnails/vsc_hard.png" },
   { id:"the-secret-box-nerf", name:"The Secret Box Nerf", creator:"KingArthur247", diff:"unrated", thumb:"thumbnails/secretbox.png" },
   { id:"zxcircles", name:"ZXCircleS", creator:"Wintter", diff:"easy", thumb:"https://i.ytimg.com/vi/0XVajALPZWw/maxresdefault.jpg" },
@@ -119,7 +119,6 @@ const PROGRESS = [
   { name:"Shitty Idols", creator:"Zurteh", best:58, runs:"53–100%", est:"Top 1", thumb:"thumbnails/shitty_idols.png" },
   { name:"Anathema Easy", creator:"ruskysalat", best:17, runs:"31–100%", est:"Top 1", thumb:"thumbnails/anathema.png" },
   { name:"Shitty Amethyst", creator:"hoviajaa", best:71, runs:"43–74%, 52–100%", est:"Top 1", thumb:"thumbnails/amethyst.png" },
-  { name:"Shitty Zodiac Buffed", creator:"p1achu", best:34, runs:"48–100%", est:"Top 2/3", thumb:"thumbnails/zodiac_buffed.png" },
   { name:"Shitty Silent Clubstep", creator:"dedaccountlol", best:32, runs:"65–100%", est:"Top 3", thumb:"thumbnails/shitty_silentclubstep.png" },
   { name:"Shitty Congregation", creator:"AcropolisBoy", best:43, runs:"41–100%", est:"Top 3", thumb:"thumbnails/congregation.png" },
 ];
