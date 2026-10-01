@@ -119,7 +119,6 @@ const PROGRESS = [
   { name:"Shitty Idols", creator:"Zurteh", best:58, runs:"53–100%", est:"Top 1", thumb:"thumbnails/shitty_idols.png" },
   { name:"Anathema Easy", creator:"ruskysalat", best:17, runs:"31–100%", est:"Top 1", thumb:"thumbnails/anathema.png" },
   { name:"Shitty Amethyst", creator:"hoviajaa", best:71, runs:"43–74%, 52–100%", est:"Top 1", thumb:"thumbnails/amethyst.png" },
-  { name:"Shitty Silent Clubstep", creator:"dedaccountlol", best:32, runs:"65–100%", est:"Top 3", thumb:"thumbnails/shitty_silentclubstep.png" },
   { name:"Shitty Congregation", creator:"AcropolisBoy", best:43, runs:"41–100%", est:"Top 3", thumb:"thumbnails/congregation.png" },
-  { name:"Shitty Tidal Wave", creator:"GILD56", best:"40", runs:"38-74, 62-100", est:"Top 1/2", thumb:"thumbnails/Shitty-TidalWave.png" },
+  { name:"Shitty Tidal Wave", creator:"GILD56", best:"60", runs:"38-74, 62-100", est:"Top 1/2", thumb:"thumbnails/Shitty-TidalWave.png" },
 ];
