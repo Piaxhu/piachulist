@@ -34,8 +34,8 @@ if (page === "progress") {
   };
   draw();
 } else {
-  let q = "", d = "all";
-  const total = LEVELS.length, count = k => LEVELS.filter(l => l.diff === k).length;
+  let q = "", d = "all", shitty = false;
+  const total = LEVELS.length, count = k => LEVELS.filter(l => l.diff === k).length, isShitty = l => /shitty/i.test(l.name), nShitty = LEVELS.filter(isShitty).length;
   const hardest = LEVELS.find(l => l.hardest) || LEVELS[0];
   const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
   const IC = { lv: '<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/>', hot: '<path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>', cup: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5v2a3 3 0 0 0 3 3M16 6h3v2a3 3 0 0 1-3 3M12 13v4M8 20h8"/>' };
@@ -44,14 +44,16 @@ if (page === "progress") {
   $("#dist").innerHTML = Object.keys(DIFFS).filter(count).map(k =>
     `<i data-d="${k}" style="flex:${count(k)};background:${DIFFS[k][1]}" title="${DIFFS[k][0]}: ${count(k)}"></i>`).join("");
   $("#chips").innerHTML = [["all","Wszystkie",total],...Object.keys(DIFFS).filter(count).map(k => [k,DIFFS[k][0],count(k)])]
-    .map(([k,t,n]) => `<button data-d="${k}" class="${k==="all"?"on":""}">${t} <em>${n}</em></button>`).join("");
+    .map(([k,t,n]) => `<button data-d="${k}" class="${k==="all"?"on":""}">${t} <em>${n}</em></button>`).join("")
+    + (nShitty ? `<button data-s="1" title="Poziomy z „Shitty" w nazwie">Shitty <em>${nShitty}</em></button>` : "");
 
   function render() {
-    const needle = q.trim().toLowerCase(), plain = !needle && d === "all";
+    const needle = q.trim().toLowerCase(), plain = !needle && d === "all" && !shitty;
     let html = "";
     LEVELS.forEach((l, i) => {
       const rank = i + 1;
       if (d !== "all" && l.diff !== d) return;
+      if (shitty && !isShitty(l)) return;
       if (needle && !(l.name + " " + l.creator).toLowerCase().includes(needle)) return;
       if (plain && rank % 10 === 1) html += `<h2 class="tier">${rank === 1 ? "Top 10" : "#" + rank + " – #" + Math.min(rank + 9, total)}</h2>`;
       const [label, color, icon] = DIFFS[l.diff] || DIFFS.unrated;
@@ -84,12 +86,18 @@ if (page === "progress") {
   }
   listEl.onclick = e => { const m = e.target.closest(".main"); if (m && !e.target.closest("a")) toggle(m); };
   listEl.onkeydown = e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".main")) { e.preventDefault(); toggle(e.target); } };
-  const setD = k => {
-    d = d === k ? "all" : k;
-    document.querySelectorAll(".chips button").forEach(b => b.classList.toggle("on", b.dataset.d === d));
+  const sync = () => {
+    document.querySelectorAll(".chips button").forEach(b => b.classList.toggle("on", b.dataset.s ? shitty : b.dataset.d === "all" ? d === "all" && !shitty : b.dataset.d === d));
     render();
   };
-  $("#chips").onclick = e => { const b = e.target.closest("button"); if (b) { d = "x"; setD(b.dataset.d); } };
+  const setD = k => { d = d === k ? "all" : k; sync(); };
+  $("#chips").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.s) shitty = !shitty;                       // Shitty łączy się z filtrem trudności
+    else if (b.dataset.d === "all") { d = "all"; shitty = false; }
+    else d = b.dataset.d;
+    sync();
+  };
   $("#dist").onclick = e => { if (e.target.dataset.d) setD(e.target.dataset.d); };
   $("#q").oninput = e => { q = e.target.value; render(); };
   $("#rnd").onclick = () => {
@@ -101,7 +109,7 @@ if (page === "progress") {
   render();
   // --- ekran powitalny <-> lista (jeden plik)
   const home = $("#home"), view = $("#listview"), navList = document.querySelector('nav a[href^="list.html"]');
-  const show = w => { const l = w === "list"; home.hidden = l; view.hidden = !l; navList.classList.toggle("on", l); window.scrollTo(0, 0); };
+  const show = w => { const l = w === "list"; home.hidden = l; view.hidden = !l; navList.classList.toggle("on", l); document.body.classList.toggle("is-home", !l); window.scrollTo(0, 0); };
   const go = w => { try { history.pushState({ v: w }, ""); } catch (e) {} show(w); };
   const fromNav = new URLSearchParams(location.search).get("view") === "list";
   if (fromNav) { try { history.replaceState({ v: "list" }, "", location.pathname); } catch (e) {} }

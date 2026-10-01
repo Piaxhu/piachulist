@@ -1,16 +1,14 @@
 :root{--bg:#0a0f1e;--panel:#111830;--line:#1f2a4a;--text:#eef1fb;--mute:#8b96b8;--a:#c04bd6;--b:#ffd84a}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);min-height:100vh;background:var(--bg)}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);min-height:100vh;min-height:100dvh;background:var(--bg);display:flex;flex-direction:column}
 body::before{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none;filter:blur(24px);
   background:radial-gradient(38% 38% at 18% 22%,#2a55d08a,transparent 70%),radial-gradient(34% 34% at 82% 18%,#c04bd65a,transparent 70%),
   radial-gradient(40% 40% at 70% 86%,#ffd84a26,transparent 70%),radial-gradient(34% 34% at 8% 84%,#1fb6ff38,transparent 70%);animation:aur 26s ease-in-out infinite alternate}
 @keyframes aur{to{transform:translate3d(5%,4%,0) rotate(7deg) scale(1.1)}}
 .shapes{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.sh{position:absolute;bottom:-70px;opacity:.2;animation:float linear infinite;will-change:transform}
-.sh.sq{border:2px solid currentColor;border-radius:6px}.sh.ring{border:2px solid currentColor;border-radius:50%}
-.sh.tri{background:currentColor;opacity:.13;clip-path:polygon(50% 0,100% 100%,0 100%)}
-@keyframes float{to{transform:translate3d(var(--dx,40px),-125vh,0) rotate(var(--rot,360deg))}}
+.bgi{position:absolute;bottom:-90px;height:auto;opacity:0;user-select:none;-webkit-user-drag:none;animation:float linear infinite;will-change:transform,opacity;filter:blur(var(--bl,0px)) saturate(.9)}
+@keyframes float{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}12%,80%{opacity:var(--o,.2)}100%{opacity:0;transform:translate3d(var(--dx,40px),-125vh,0) rotate(var(--rot,360deg))}}
 a{color:inherit;text-decoration:none}
 a:hover{text-decoration:underline}
 .top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
@@ -20,7 +18,7 @@ nav{display:flex;gap:6px;background:var(--panel);padding:4px;border-radius:12px;
 nav a{padding:8px 16px;border-radius:9px;font-size:14px;font-weight:600;color:var(--mute)}
 nav a.on{background:linear-gradient(135deg,var(--a),#8a2fb0);color:#fff}
 nav a:hover{text-decoration:none;color:#fff}
-main{max-width:920px;margin:0 auto;padding:0 clamp(12px,4vw,24px) 60px}
+main{flex:1 0 auto;width:100%;max-width:920px;margin:0 auto;padding:0 clamp(12px,4vw,24px) 60px}
 .hero{padding:clamp(28px,7vw,64px) 0 24px}
 .eyebrow{color:var(--b);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
 h1{font-size:clamp(28px,6vw,52px);line-height:1.08;letter-spacing:-.02em}
@@ -62,7 +60,7 @@ h1 span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-c
 .empty{text-align:center;color:var(--mute);padding:40px 0}
 .flash{animation:fl 3.5s}
 @keyframes fl{0%,60%{box-shadow:0 0 0 3px var(--b),0 0 30px var(--b)}100%{box-shadow:none}}
-footer{text-align:center;color:var(--mute);font-size:12px;padding:24px}
+footer{flex:none;text-align:center;color:var(--mute);font-size:12px;padding:24px 16px;user-select:none}
 @media(max-width:520px){.badge small{display:none}.badge{width:36px}.rank{min-width:34px}.main{padding-right:8px}.th{flex-basis:88px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
@@ -131,3 +129,12 @@ nav a{transition:background .2s,color .2s,transform .2s}nav a:not(.on):hover{bac
 .totop{transition:opacity .3s,transform .35s cubic-bezier(.34,1.56,.64,1),visibility .3s,box-shadow .2s}
 @media(max-width:520px){.cta .primary{flex:0 0 auto;width:max-content;justify-content:center}}
 @media(prefers-reduced-motion:reduce){.shapes{display:none}}
+/* ekran powitalny: bez scrollowania, stopka zawsze na dole ekranu */
+body.is-home{height:100vh;height:100dvh;overflow:hidden}
+body.is-home main{flex:1 1 0;min-height:0;display:flex;flex-direction:column;padding-bottom:0}
+body.is-home .home{flex:1;min-height:0;padding:12px 0}
+body.is-home footer{padding:14px 16px}
+.home h1{font-size:clamp(28px,min(7.2vw,8vh),66px)}
+@media(max-height:720px){.home .sub{margin-top:12px}.cta{margin-top:20px}.pills{margin-top:22px}}
+@media(max-height:520px){body.is-home{height:auto;min-height:100dvh;overflow:auto}body.is-home main{flex:1 0 auto}}
+.chips button[data-s]{margin-left:6px}

@@ -62,16 +62,24 @@ const CHANGELOG = [\n${C}\n];
 // Progress — poziomy nad którymi teraz pracujesz
 const PROGRESS = [\n${P}\n];\n`;
 }
-// Tło: dryfujące kształty w stylu Geometry Dash (kwadraty, kolce, kółka)
+// Tło: ikony z Twojego icon setu (gamemode'y GD) dryfujące w górę.
+// Dodasz nową ikonę: wrzuć PNG do bgicons/ i dopisz jej nazwę (bez .png) poniżej.
+const BG_ICONS = ["ball", "cube", "robot", "ship", "spider", "swing", "ufo", "wave"];
 function makeBg() {
   if (typeof document === "undefined" || document.querySelector(".shapes")) return;
   const box = document.createElement("div"); box.className = "shapes"; box.setAttribute("aria-hidden", "true");
-  const n = innerWidth < 600 ? 9 : 16, types = ["sq", "tri", "ring"], cols = ["#c04bd6", "#ffd84a", "#4f8bff", "#5ee0ff"], r = Math.random;
+  const n = innerWidth < 600 ? 7 : 13, r = Math.random; let last = -1;
+  const place = (el, first) => {
+    let k; do { k = Math.floor(r() * BG_ICONS.length); } while (k === last && BG_ICONS.length > 1); last = k;
+    const depth = r(), sz = 26 + depth * 26, dur = 46 - depth * 22 + r() * 10;   // depth: 0 = daleko (mniejsze, rozmyte, wolne), 1 = bliżej
+    el.src = `bgicons/${BG_ICONS[k]}.png`;
+    el.style.cssText = `left:${(r() * 96).toFixed(1)}%;width:${sz.toFixed(0)}px;--o:${(.10 + depth * .13).toFixed(2)};--bl:${((1 - depth) * 1.6).toFixed(1)}px;--dx:${((r() - .5) * 180) | 0}px;--rot:${(r() < .5 ? -1 : 1) * ((120 + r() * 300) | 0)}deg;animation-duration:${dur.toFixed(1)}s` + (first ? `;animation-delay:-${(r() * dur).toFixed(1)}s` : "");
+    if (!first) { el.style.animationName = "none"; void el.offsetWidth; el.style.animationName = ""; }
+  };
   for (let i = 0; i < n; i++) {
-    const s = document.createElement("i"), sz = 14 + r() * 38;
-    s.className = "sh " + types[i % 3];
-    s.style.cssText = `left:${r() * 100}%;width:${sz}px;height:${sz}px;color:${cols[i % 4]};animation-duration:${22 + r() * 30}s;animation-delay:-${r() * 40}s;--dx:${(r() - .5) * 160}px;--rot:${(r() < .5 ? -1 : 1) * (180 + r() * 360)}deg`;
-    box.appendChild(s);
+    const el = document.createElement("img"); el.className = "bgi"; el.alt = ""; el.draggable = false; el.decoding = "async";
+    el.onerror = () => el.remove(); el.addEventListener("animationiteration", () => place(el, false));   // po każdym przelocie: nowa ikona, miejsce i rozmiar
+    place(el, true); box.appendChild(el);
   }
   document.body.prepend(box);
 }
