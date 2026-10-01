@@ -62,4 +62,18 @@ const CHANGELOG = [\n${C}\n];
 // Progress — poziomy nad którymi teraz pracujesz
 const PROGRESS = [\n${P}\n];\n`;
 }
+// Tło: dryfujące kształty w stylu Geometry Dash (kwadraty, kolce, kółka)
+function makeBg() {
+  if (typeof document === "undefined" || document.querySelector(".shapes")) return;
+  const box = document.createElement("div"); box.className = "shapes"; box.setAttribute("aria-hidden", "true");
+  const n = innerWidth < 600 ? 9 : 16, types = ["sq", "tri", "ring"], cols = ["#c04bd6", "#ffd84a", "#4f8bff", "#5ee0ff"], r = Math.random;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement("i"), sz = 14 + r() * 38;
+    s.className = "sh " + types[i % 3];
+    s.style.cssText = `left:${r() * 100}%;width:${sz}px;height:${sz}px;color:${cols[i % 4]};animation-duration:${22 + r() * 30}s;animation-delay:-${r() * 40}s;--dx:${(r() - .5) * 160}px;--rot:${(r() < .5 ? -1 : 1) * (180 + r() * 360)}deg`;
+    box.appendChild(s);
+  }
+  document.body.prepend(box);
+}
+makeBg();
 if (typeof module !== "undefined") module.exports = { applyChange, serialize, describe };

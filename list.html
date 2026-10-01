@@ -12,21 +12,34 @@
 <body data-page="list">
 <header class="top">
   <a class="brand" href="list.html"><img src="new_piachulist.png" alt="PIACHULIST"></a>
-  <nav><a class="on" href="list.html">Main List</a><a href="progress.html">Progress</a><a href="changelog.html">Changelog</a></nav>
+  <nav><a href="list.html?view=list">Main List</a><a href="progress.html">Progress</a><a href="changelog.html">Changelog</a></nav>
 </header>
 <main>
-  <section class="hero">
-    <p class="eyebrow">Geometry Dash · p1achu</p>
-    <h1>Najcięższe poziomy,<br><span>które przeszedłem.</span></h1>
-    <div class="stats" id="stats"></div>
-    <div class="dist" id="dist" title="Kliknij, aby filtrować"></div>
+  <section id="home" class="home">
+    <p class="eyebrow rise" style="--i:0">Geometry Dash · p1achu</p>
+    <h1 class="rise" style="--i:1">Lista najcięższych poziomów <span>ukończonych przez p1achu</span></h1>
+    <p class="sub rise" style="--i:2">Ranking demonów, które pokonałem — od easy po extreme. Zobacz całą listę, sprawdź, nad czym teraz pracuję, i śledź każdą zmianę miejsc.</p>
+    <div class="cta">
+      <a id="go" class="btn primary rise" style="--i:3" href="list.html?view=list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Sprawdź listę</a>
+      <a class="btn rise" style="--i:4" href="progress.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>Postępy</a>
+      <a class="btn rise" style="--i:4" href="changelog.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Changelog</a>
+      <a id="adminBtn" class="btn rise" style="--i:4" href="admin.html" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Panel admina</a>
+    </div>
+    <div class="pills" id="stats"></div>
   </section>
-  <section class="tools">
-    <input id="q" type="search" placeholder="Szukaj poziomu lub twórcy…" autocomplete="off">
-    <button id="rnd" type="button">🎲 Losowy</button>
-    <div class="chips" id="chips"></div>
-  </section>
-  <section id="list" class="list"></section>
+  <div id="listview" hidden>
+    <section class="hero">
+      <p class="eyebrow">Main List</p>
+      <h1>Najcięższe poziomy,<br><span>które przeszedłem.</span></h1>
+      <div class="dist" id="dist" title="Kliknij, aby filtrować"></div>
+    </section>
+    <section class="tools">
+      <input id="q" type="search" placeholder="Szukaj poziomu lub twórcy…" autocomplete="off">
+      <button id="rnd" type="button">🎲 Losowy</button>
+      <div class="chips" id="chips"></div>
+    </section>
+    <section id="list" class="list"></section>
+  </div>
 </main>
 <footer>Piachulist · completed levels list by p1achu</footer>
 <button class="totop" id="totop" type="button" aria-label="Do góry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>

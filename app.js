@@ -37,8 +37,10 @@ if (page === "progress") {
   let q = "", d = "all";
   const total = LEVELS.length, count = k => LEVELS.filter(l => l.diff === k).length;
   const hardest = LEVELS.find(l => l.hardest) || LEVELS[0];
-  $("#stats").innerHTML = [[total,"poziomów"],[count("extreme")+count("insane")+count("hard"),"hard+ demonów"],[esc(hardest.name),"najcięższy"]]
-    .map(([n,t]) => `<div><b>${n}</b><span>${t}</span></div>`).join("");
+  const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+  const IC = { lv: '<path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/>', hot: '<path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>', cup: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5v2a3 3 0 0 0 3 3M16 6h3v2a3 3 0 0 1-3 3M12 13v4M8 20h8"/>' };
+  $("#stats").innerHTML = [[IC.lv, total, "poziomów"], [IC.hot, count("extreme") + count("insane") + count("hard"), "hard demonów lub wyżej"], [IC.cup, esc(hardest.name), "najcięższy"]]
+    .map(([ic, n, t], x) => `<div class="pill rise" style="--i:${x + 5}">${svg(ic)}<b>${n}</b><span>${t}</span></div>`).join("");
   $("#dist").innerHTML = Object.keys(DIFFS).filter(count).map(k =>
     `<i data-d="${k}" style="flex:${count(k)};background:${DIFFS[k][1]}" title="${DIFFS[k][0]}: ${count(k)}"></i>`).join("");
   $("#chips").innerHTML = [["all","Wszystkie",total],...Object.keys(DIFFS).filter(count).map(k => [k,DIFFS[k][0],count(k)])]
@@ -66,19 +68,19 @@ if (page === "progress") {
   function toggle(main) {
     const card = main.parentElement, wasOpen = card.classList.contains("open");
     listEl.querySelectorAll(".card.open").forEach(c => {
-      c.classList.remove("open"); c.querySelector(".main").setAttribute("aria-expanded", "false"); c.querySelector(".hist")?.remove();
+      c.classList.remove("open"); c.querySelector(".main").setAttribute("aria-expanded", "false");
+      const old = c.querySelector(".hist"); if (old) setTimeout(() => { if (!c.classList.contains("open")) old.remove(); }, 450);
     });
     if (wasOpen) return;
-    const open = card.classList.toggle("open");
-    main.setAttribute("aria-expanded", open);
     let h = card.querySelector(".hist");
-    if (open && !h) {
+    if (!h) {
       const es = hist(card.dataset.id);
       h = document.createElement("div"); h.className = "hist";
-      h.innerHTML = es.length ? es.map(e => `<div><time>${esc(e.date)}</time><span>${describe(e, true)}</span></div>`).join("")
-        : "<div><span>Brak zmian miejsca od czasu wprowadzenia historii.</span></div>";
-      card.appendChild(h);
+      h.innerHTML = '<div class="in"><div class="pad">' + (es.length ? es.map(e => `<div><time>${esc(e.date)}</time><span>${describe(e, true)}</span></div>`).join("")
+        : "<div><span>Brak zmian miejsca od czasu wprowadzenia historii.</span></div>") + "</div></div>";
+      card.appendChild(h); void h.offsetHeight;
     }
+    card.classList.add("open"); main.setAttribute("aria-expanded", "true");
   }
   listEl.onclick = e => { const m = e.target.closest(".main"); if (m && !e.target.closest("a")) toggle(m); };
   listEl.onkeydown = e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches(".main")) { e.preventDefault(); toggle(e.target); } };
@@ -97,6 +99,18 @@ if (page === "progress") {
     el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
   };
   render();
+  // --- ekran powitalny <-> lista (jeden plik)
+  const home = $("#home"), view = $("#listview"), navList = document.querySelector('nav a[href^="list.html"]');
+  const show = w => { const l = w === "list"; home.hidden = l; view.hidden = !l; navList.classList.toggle("on", l); window.scrollTo(0, 0); };
+  const go = w => { try { history.pushState({ v: w }, ""); } catch (e) {} show(w); };
+  const fromNav = new URLSearchParams(location.search).get("view") === "list";
+  if (fromNav) { try { history.replaceState({ v: "list" }, "", location.pathname); } catch (e) {} }
+  show(fromNav ? "list" : "home");
+  window.addEventListener("popstate", e => show(e.state && e.state.v === "list" ? "list" : "home"));
+  $("#go").onclick = e => { e.preventDefault(); go("list"); };
+  navList.onclick = e => { e.preventDefault(); if (view.hidden) go("list"); };
+  document.querySelector(".brand").onclick = e => { e.preventDefault(); if (home.hidden) go("home"); else window.scrollTo({ top: 0, behavior: "smooth" }); };
+  if (location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) $("#adminBtn").hidden = false;
   const up = $("#totop");
   const onScroll = () => up.classList.toggle("show", window.scrollY > 500);
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
