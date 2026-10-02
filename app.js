@@ -90,12 +90,12 @@ if (page === "progress") {
     document.querySelectorAll(".chips button").forEach(b => b.classList.toggle("on", b.dataset.s ? shitty : b.dataset.d === "all" ? d === "all" && !shitty : b.dataset.d === d));
     render();
   };
-  const setD = k => { d = d === k ? "all" : k; sync(); };
+  const setD = k => { d = d === k ? "all" : k; shitty = false; sync(); };
   $("#chips").onclick = e => {
     const b = e.target.closest("button"); if (!b) return;
-    if (b.dataset.s) shitty = !shitty;                       // Shitty łączy się z filtrem trudności
+    if (b.dataset.s) { shitty = !shitty; d = "all"; }          // Shitty jest wyłączne: wybierasz ALBO Shitty, ALBO trudność
     else if (b.dataset.d === "all") { d = "all"; shitty = false; }
-    else d = b.dataset.d;
+    else { d = b.dataset.d; shitty = false; }
     sync();
   };
   $("#dist").onclick = e => { if (e.target.dataset.d) setD(e.target.dataset.d); };

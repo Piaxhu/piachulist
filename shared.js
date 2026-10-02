@@ -62,24 +62,43 @@ const CHANGELOG = [\n${C}\n];
 // Progress — poziomy nad którymi teraz pracujesz
 const PROGRESS = [\n${P}\n];\n`;
 }
-// Tło: ikony z Twojego icon setu (gamemode'y GD) dryfujące w górę.
-// Dodasz nową ikonę: wrzuć PNG do bgicons/ i dopisz jej nazwę (bez .png) poniżej.
+// ====== TŁO: ikony z Twojego icon setu (gamemode'y GD) dryfujące w górę ======
+// Dodasz nową ikonę: wrzuć PNG do bgicons/ i dopisz jej nazwę (bez .png) w BG_ICONS.
 const BG_ICONS = ["ball", "cube", "robot", "ship", "spider", "swing", "ufo", "wave"];
+// Tu zmieniasz wygląd ikon w tle ("daleko" = małe, rozmyte, słabe; "blisko" = większe, ostrzejsze):
+const BG_CFG = {
+  count: 22,                      // ile ikon naraz — komputer
+  countMobile: 13,                 // ile ikon naraz — telefon (ekran węższy niż 600 px)
+  sizeMin: 28.6, sizeMax: 57.2,   // rozmiar w px: daleko → blisko
+  opacityMin: 0.10, opacityMax: 0.23, // przezroczystość (1 = pełna): daleko → blisko
+  blurMax: 1.6,                   // rozmycie najdalszych ikon w px (0 = brak)
+  durFar: [44, 53],               // czas przelotu w sekundach dla dalekich [min, max] (MNIEJ = SZYBCIEJ)
+  durNear: [23, 32],              // czas przelotu w sekundach dla bliskich [min, max]
+  driftX: 180,                    // maks. dryf w bok w px
+  rotate: [120, 420]              // obrót w stopniach podczas przelotu [min, max]
+};
 function makeBg() {
   if (typeof document === "undefined" || document.querySelector(".shapes")) return;
+  const C = BG_CFG, r = Math.random, lerp = (a, b, t) => a + (b - a) * t, n = innerWidth < 600 ? C.countMobile : C.count;
   const box = document.createElement("div"); box.className = "shapes"; box.setAttribute("aria-hidden", "true");
-  const n = innerWidth < 600 ? 7 : 13, r = Math.random; let last = -1;
-  const place = (el, first) => {
+  const lanes = [...Array(n).keys()].sort(() => r() - .5);   // każda ikona ma własny pas poziomy → równy rozkład na szerokości
+  let last = -1;
+  const place = (el, i, depth, dur, restart) => {
     let k; do { k = Math.floor(r() * BG_ICONS.length); } while (k === last && BG_ICONS.length > 1); last = k;
-    const depth = r(), sz = 26 + depth * 26, dur = 46 - depth * 22 + r() * 10;   // depth: 0 = daleko (mniejsze, rozmyte, wolne), 1 = bliżej
+    const left = ((lanes[i] + .5 + (r() - .5) * .6) / n) * 96, sz = lerp(C.sizeMin, C.sizeMax, depth) * (.95 + r() * .1);
     el.src = `bgicons/${BG_ICONS[k]}.png`;
-    el.style.cssText = `left:${(r() * 96).toFixed(1)}%;width:${sz.toFixed(0)}px;--o:${(.10 + depth * .13).toFixed(2)};--bl:${((1 - depth) * 1.6).toFixed(1)}px;--dx:${((r() - .5) * 180) | 0}px;--rot:${(r() < .5 ? -1 : 1) * ((120 + r() * 300) | 0)}deg;animation-duration:${dur.toFixed(1)}s` + (first ? `;animation-delay:-${(r() * dur).toFixed(1)}s` : "");
-    if (!first) { el.style.animationName = "none"; void el.offsetWidth; el.style.animationName = ""; }
+    el.style.cssText = `left:${left.toFixed(1)}%;width:${sz.toFixed(0)}px;--o:${lerp(C.opacityMin, C.opacityMax, depth).toFixed(2)};--bl:${((1 - depth) * C.blurMax).toFixed(1)}px;` +
+      `--dx:${((r() - .5) * 2 * C.driftX) | 0}px;--rot:${(r() < .5 ? -1 : 1) * (C.rotate[0] + r() * (C.rotate[1] - C.rotate[0])) | 0}deg;animation-duration:${dur.toFixed(1)}s` +
+      (restart ? "" : `;animation-delay:-${((i / n) * dur).toFixed(1)}s`);   // równo rozłożone fazy na starcie
+    if (restart) { el.style.animationName = "none"; void el.offsetWidth; el.style.animationName = ""; }
   };
   for (let i = 0; i < n; i++) {
+    const depth = (i * 0.618034 + .15) % 1,   // równomierne wymieszanie dalekich i bliskich ikon
+      lo = lerp(C.durFar[0], C.durNear[0], depth), hi = lerp(C.durFar[1], C.durNear[1], depth), dur = lo + r() * (hi - lo);
     const el = document.createElement("img"); el.className = "bgi"; el.alt = ""; el.draggable = false; el.decoding = "async";
-    el.onerror = () => el.remove(); el.addEventListener("animationiteration", () => place(el, false));   // po każdym przelocie: nowa ikona, miejsce i rozmiar
-    place(el, true); box.appendChild(el);
+    el.onerror = () => el.remove();
+    el.addEventListener("animationiteration", () => place(el, i, depth, dur, true));   // po każdym przelocie: nowa ikona i pozycja w swoim pasie
+    place(el, i, depth, dur, false); box.appendChild(el);
   }
   document.body.prepend(box);
 }

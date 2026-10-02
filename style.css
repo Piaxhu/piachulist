@@ -2,7 +2,7 @@
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);min-height:100vh;min-height:100dvh;background:var(--bg);display:flex;flex-direction:column}
-body::before{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none;filter:blur(24px);
+body::before{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none;filter:blur(24px);opacity:.93;
   background:radial-gradient(38% 38% at 18% 22%,#2a55d08a,transparent 70%),radial-gradient(34% 34% at 82% 18%,#c04bd65a,transparent 70%),
   radial-gradient(40% 40% at 70% 86%,#ffd84a26,transparent 70%),radial-gradient(34% 34% at 8% 84%,#1fb6ff38,transparent 70%);animation:aur 26s ease-in-out infinite alternate}
 @keyframes aur{to{transform:translate3d(5%,4%,0) rotate(7deg) scale(1.1)}}
@@ -28,6 +28,7 @@ h1 span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-c
 .tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
 #q{flex:1 1 220px;min-width:0;background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px 14px;font-size:15px}
 #q:focus{outline:2px solid var(--a);border-color:transparent}
+#q::placeholder{color:var(--mute);opacity:1}
 #rnd{background:linear-gradient(135deg,var(--a),#8a2fb0);color:#fff;border:0;border-radius:12px;padding:0 18px;font-weight:700;cursor:pointer;min-height:44px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;width:100%}
 .chips button{background:var(--panel);border:1px solid var(--line);color:var(--mute);border-radius:99px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer}
