@@ -52,7 +52,7 @@ const LEVELS = [
   { id:"shitty-sakupen-circles-leroz", name:"Shitty Sakupen Circles", creator:"LeroZ", diff:"unrated", thumb:"thumbnails/shitty_sakupencircles.png" },
   { id:"ratio-circles", name:"Ratio Circles", creator:"Ch4rlie03", diff:"easy", thumb:"https://i.ytimg.com/vi/-1tTyo08HFI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA3V52BwNnNOpleJD7ynRITyaBu0g" },
   { id:"erou", name:"Erou", creator:"JonathanGD", diff:"easy", thumb:"https://i.ytimg.com/vi/_SI8TbLMPy8/maxresdefault.jpg" },
-  { id:"toe-2", name:"TOE 2", creator:"RobTop", diff:"easy", thumb:"https://static.wikia.nocookie.net/geometry-dash/images/b/ba/ToE_2.jpg/revision/latest?cb=20160621213450&path-prefix=pl" },
+  { id:"toe-2", name:"TOE 2", creator:"RobTop", diff:"easy", thumb:"https://preview.redd.it/am-i-only-one-who-hates-toe-2-v0-03zcwc3hsp6d1.jpg?width=1920&format=pjpg&auto=webp&s=dba5b3cefa5299f5b440d0a6a1b31d536a2b45be" },
   { id:"past", name:"past", creator:"neigefeu", diff:"easy", thumb:"https://i.ytimg.com/vi/54xF_GApfjA/maxresdefault.jpg" },
   { id:"vogue", name:"VOGUE", creator:"Presta", diff:"easy", thumb:"https://i.ytimg.com/vi/9SPPRk9w4DA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCDO9LKJYh5VrW7c5rYwNbOq5xdAA" },
   { id:"living-open", name:"Living Open", creator:"MaFFaKa", diff:"medium", thumb:"https://i.ytimg.com/vi/NKIg8lm48jk/maxresdefault.jpg" },
@@ -116,9 +116,5 @@ const CHANGELOG = [
 
 // Progress — poziomy nad którymi teraz pracujesz
 const PROGRESS = [
-  { name:"Shitty Idols", creator:"Zurteh", best:58, runs:"53–100%", est:"Top 1", thumb:"thumbnails/shitty_idols.png" },
-  { name:"Anathema Easy", creator:"ruskysalat", best:17, runs:"31–100%", est:"Top 1", thumb:"thumbnails/anathema.png" },
-  { name:"Shitty Amethyst", creator:"hoviajaa", best:71, runs:"43–74%, 52–100%", est:"Top 1", thumb:"thumbnails/amethyst.png" },
-  { name:"Shitty Congregation", creator:"AcropolisBoy", best:43, runs:"41–100%", est:"Top 3", thumb:"thumbnails/congregation.png" },
-  { name:"Shitty Tidal Wave", creator:"GILD56", best:"60", runs:"55-100%", est:"Top 1/2", thumb:"thumbnails/Shitty-TidalWave.png" },
+  { name:"Shitty Tidal Wave", creator:"GILD56", best:"60", runs:"47-100%", est:"Top 1/2", thumb:"thumbnails/Shitty-TidalWave.png" },
 ];
