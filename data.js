@@ -191,4 +191,5 @@ const CHANGELOG = [
 // Progress — poziomy nad którymi teraz pracujesz
 const PROGRESS = [
   { name:"Shitty Tidal Wave", creator:"GILD56", best:"60", runs:"47-100%", est:"Top 1/2", thumb:"thumbnails/Shitty-TidalWave.png" },
+  { name:"Swirling Fire", creator:"Jenkins", best:"80", runs:"34-100", est:"Top 2", thumb:"thumbnails/SwirlingFire.png" },
 ];
