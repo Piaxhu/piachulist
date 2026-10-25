@@ -7,7 +7,7 @@
 // ============================================================
 const LEVELS = [
   { id:"acu", name:"Acu", creator:"neigefeu", diff:"extreme", thumb:"thumbnails/acu.png", hardest:true },
-  { id:"swirling-fire", name:"Swirling Fire", creator:"Jenkins", diff:"insane", thumb:"thumbnails/SwirlingFire.png" },
+  { id:"swirling-fire", name:"Swirling Fire", creator:"Jenkins", diff:"insane", thumb:"thumbnails/SwirlingFire.png", link:"https://www.youtube.com/watch?v=qIM3KJGT77Q" },
   { id:"pop-culture", name:"Pop Culture", creator:"Zafkiel7", diff:"insane", thumb:"thumbnails/PopCulture.png", link:"https://www.youtube.com/watch?v=N-FTFNxovtM" },
   { id:"magic-life", name:"Magic Life", creator:"Astraa", diff:"insane", thumb:"https://i.ytimg.com/vi/G7AsIsPUvYM/maxresdefault.jpg", link:"https://www.youtube.com/watch?v=nWA6bq-ttH8&t=26s&ab_channel=%5BGD%5DP1achu" },
   { id:"windy-landscape", name:"Windy Landscape", creator:"WOOGI1411", diff:"insane", thumb:"https://i.ytimg.com/vi/hTX0Ch5bgMw/maxresdefault.jpg", link:"https://www.youtube.com/watch?v=nWA6bq-ttH8&t=26s&ab_channel=%5BGD%5DP1achu" },
