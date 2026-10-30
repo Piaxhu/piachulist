@@ -11,15 +11,15 @@
 <body data-page="changelog">
 <header class="top">
   <a class="brand" href="list.html"><img src="new_piachulist.png" alt="PIACHULIST"></a>
-  <nav><a href="list.html?view=list">Main List</a><a href="progress.html">Progress</a><a class="on" href="changelog.html">Changelog</a></nav>
+  <div class="hr"><nav><a href="list.html?view=list" data-i18n="nav_list">Main List</a><a href="progress.html" data-i18n="nav_progress">Progress</a><a class="on" href="changelog.html" data-i18n="nav_changelog">Changelog</a></nav><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div></div>
 </header>
 <main>
   <section class="hero">
-    <p class="eyebrow">Historia miejsc · p1achu</p>
-    <h1>Changelog<br><span>listy.</span></h1>
+    <p class="eyebrow" data-i18n="log_eyebrow">Historia miejsc · p1achu</p>
+    <h1 data-i18n-html="log_h1"></h1>
   </section>
   <section class="tools"><div class="chips" id="chips">
-    <button data-t="all" class="on">Wszystko</button><button data-t="add">Dodane</button><button data-t="move">Przesunięcia</button><button data-t="remove">Usunięte</button>
+    <button data-t="all" class="on" data-i18n="lf_all">Wszystko</button><button data-t="add" data-i18n="lf_add">Dodane</button><button data-t="move" data-i18n="lf_move">Przesunięcia</button><button data-t="remove" data-i18n="lf_remove">Usunięte</button>
   </div></section>
   <section id="list" class="list"></section>
 </main>

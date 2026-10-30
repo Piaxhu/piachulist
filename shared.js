@@ -3,18 +3,79 @@ const DIFFS = {
   hard:["Hard Demon","#fb923c","hard_d.png"], medium:["Medium Demon","#facc15","medium_d.png"],
   easy:["Easy Demon","#4ade80","easy_d.png"], unrated:["Unrated","#94a3b8","unrated.png"]
 };
+// ====== JĘZYK (PL / EN): wybór zapisuje się w przeglądarce ======
+const I18N = {
+  pl: {
+    nav_list: "Lista", nav_progress: "Postępy", nav_changelog: "Changelog",
+    title_list: "Piachulist — Lista", title_progress: "Piachulist — Postępy", title_changelog: "Piachulist — Changelog",
+    home_h1: "Lista najcięższych poziomów <span>ukończonych przez p1achu</span>",
+    home_sub: "Ranking demonów, które pokonałem — od easy po extreme. Zobacz całą listę, sprawdź, nad czym teraz pracuję, i śledź każdą zmianę miejsc.",
+    btn_go: "Sprawdź listę", btn_progress: "Postępy", btn_changelog: "Changelog", btn_admin: "Panel admina",
+    st_levels: "poziomów", st_hard: "hard demonów lub wyżej", st_hardest: "najcięższy",
+    list_eyebrow: "Lista główna", list_h1: "Najcięższe poziomy,<br><span>które przeszedłem.</span>",
+    dist_tip: "Kliknij, aby filtrować", ph_search: "Szukaj poziomu lub twórcy…", btn_rnd: "🎲 Losowy",
+    f_all: "Wszystkie", f_shitty_tip: "Poziomy z „Shitty” w nazwie", main_tip: "Kliknij, aby zobaczyć historię miejsca",
+    hist_none: "Brak zmian miejsca od czasu wprowadzenia historii.", empty_list: "Nic nie znaleziono 🤷", totop: "Do góry",
+    prog_eyebrow: "W trakcie · p1achu", prog_h1: "Nad czym<br><span>teraz pracuję.</span>", runs: "runy:", est: "Estimated", prog_empty: "Brak poziomów w trakcie.",
+    log_eyebrow: "Historia miejsc · p1achu", log_h1: "Changelog<br><span>listy.</span>",
+    lf_all: "Wszystko", lf_add: "Dodane", lf_move: "Przesunięcia", lf_remove: "Usunięte",
+    log_empty: "Brak wpisów. Historia pojawi się po pierwszej zmianie zrobionej w panelu admina.",
+    d_add: "dodany na", d_remove: "usunięty z", d_move: "przesunięty", d_down: "zepchnięty przez", d_newlvl: " (nowy poziom)",
+    d_up_removed: "awans, usunięto", d_up_moved: "przesunięty niżej"
+  },
+  en: {
+    nav_list: "Main List", nav_progress: "Progress", nav_changelog: "Changelog",
+    title_list: "Piachulist — Main List", title_progress: "Piachulist — Progress", title_changelog: "Piachulist — Changelog",
+    home_h1: "The hardest levels <span>completed by p1achu</span>",
+    home_sub: "A ranking of the demons I've beaten — from easy to extreme. Browse the full list, see what I'm working on right now, and follow every change in the rankings.",
+    btn_go: "View the list", btn_progress: "Progress", btn_changelog: "Changelog", btn_admin: "Admin panel",
+    st_levels: "levels", st_hard: "hard demons or higher", st_hardest: "hardest",
+    list_eyebrow: "Main List", list_h1: "The hardest levels<br><span>I've beaten.</span>",
+    dist_tip: "Click to filter", ph_search: "Search level or creator…", btn_rnd: "🎲 Random",
+    f_all: "All", f_shitty_tip: "Levels with “Shitty” in the name", main_tip: "Click to see placement history",
+    hist_none: "No placement changes since history tracking began.", empty_list: "Nothing found 🤷", totop: "Back to top",
+    prog_eyebrow: "In progress · p1achu", prog_h1: "What I'm<br><span>working on now.</span>", runs: "runs:", est: "Estimated", prog_empty: "Nothing in progress.",
+    log_eyebrow: "Placement history · p1achu", log_h1: "List<br><span>changelog.</span>",
+    lf_all: "All", lf_add: "Added", lf_move: "Moves", lf_remove: "Removed",
+    log_empty: "No entries yet. History will appear after the first change made in the admin panel.",
+    d_add: "added at", d_remove: "removed from", d_move: "moved", d_down: "pushed down by", d_newlvl: " (new level)",
+    d_up_removed: "moved up after removing", d_up_moved: "moved down"
+  }
+};
+let LANG = "pl";
+try { LANG = localStorage.getItem("piachulist-lang") || ""; } catch (e) {}
+if (!I18N[LANG]) LANG = typeof navigator !== "undefined" && /^pl/i.test(navigator.language || "") ? "pl" : "en";   // pierwsza wizyta: język przeglądarki
+if (typeof document !== "undefined" && document.body && document.body.dataset.page === "admin") LANG = "pl";      // panel admina zawsze po polsku
+const t = k => (I18N[LANG] && I18N[LANG][k]) ?? I18N.pl[k] ?? k;
+function applyLang() {
+  if (typeof document === "undefined") return;
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.dataset.i18nHtml));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => el.placeholder = t(el.dataset.i18nPh));
+  document.querySelectorAll("[data-i18n-title]").forEach(el => el.title = t(el.dataset.i18nTitle));
+  document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
+  document.querySelectorAll(".lang button").forEach(b => { b.classList.toggle("on", b.dataset.lang === LANG); b.setAttribute("aria-pressed", b.dataset.lang === LANG); });
+  const tt = I18N[LANG]["title_" + document.body.dataset.page]; if (tt) document.title = tt;
+}
+function setLang(l) {
+  if (!I18N[l] || l === LANG) return;
+  LANG = l; try { localStorage.setItem("piachulist-lang", l); } catch (e) {}
+  applyLang(); if (typeof window.onLang === "function") window.onLang();   // strony przerysowują dynamiczne elementy
+}
+
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const slugify = s => s.normalize("NFKD").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "level";
 
 // Opis jednego wpisu historii. forLevel=true -> bez nazwy poziomu (widok karty)
 function describe(e, forLevel) {
   const nm = forLevel ? "" : `<b>${esc(e.name)}</b> `, by = e.byName ? `<b>${esc(e.byName)}</b>` : "";
-  if (e.type === "add") return `${nm}dodany na <b>#${e.to}</b>`;
-  if (e.type === "remove") return `${nm}usunięty z <b>#${e.from}</b>`;
+  if (e.type === "add") return `${nm}${t("d_add")} <b>#${e.to}</b>`;
+  if (e.type === "remove") return `${nm}${t("d_remove")} <b>#${e.from}</b>`;
   const down = e.to > e.from, arrow = `${down ? "▼" : "▲"} #${e.from} → #${e.to}`;
-  if (!e.by) return `${nm}przesunięty ${arrow}`;
-  if (down) return `${nm}${arrow} · zepchnięty przez ${by}${e.cause === "add" ? " (nowy poziom)" : ""}`;
-  return `${nm}${arrow} · awans, ${e.cause === "remove" ? `usunięto ${by}` : `${by} przesunięty niżej`}`;
+  if (!e.by) return `${nm}${t("d_move")} ${arrow}`;
+  if (down) return `${nm}${arrow} · ${t("d_down")} ${by}${e.cause === "add" ? t("d_newlvl") : ""}`;
+  return `${nm}${arrow} · ${e.cause === "remove" ? `${t("d_up_removed")} ${by}` : `${by} ${t("d_up_moved")}`}`;
 }
 
 // Czysta logika zmian: zwraca {levels, entries} (nie modyfikuje wejścia)
@@ -67,10 +128,10 @@ const PROGRESS = [\n${P}\n];\n`;
 const BG_ICONS = ["ball", "cube", "robot", "ship", "spider", "swing", "ufo", "wave"];
 // Tu zmieniasz wygląd ikon w tle ("daleko" = małe, rozmyte, słabe; "blisko" = większe, ostrzejsze):
 const BG_CFG = {
-  count: 22,                      // ile ikon naraz — komputer
-  countMobile: 13,                 // ile ikon naraz — telefon (ekran węższy niż 600 px)
+  count: 30,                      // ile ikon naraz — komputer
+  countMobile: 17,                 // ile ikon naraz — telefon (ekran węższy niż 600 px)
   sizeMin: 28.6, sizeMax: 57.2,   // rozmiar w px: daleko → blisko
-  opacityMin: 0.10, opacityMax: 0.23, // przezroczystość (1 = pełna): daleko → blisko
+  opacityMin: 0.18, opacityMax: 0.34, // przezroczystość (1 = pełna): daleko → blisko
   blurMax: 1.6,                   // rozmycie najdalszych ikon w px (0 = brak)
   durFar: [44, 53],               // czas przelotu w sekundach dla dalekich [min, max] (MNIEJ = SZYBCIEJ)
   durNear: [23, 32],              // czas przelotu w sekundach dla bliskich [min, max]
@@ -103,4 +164,8 @@ function makeBg() {
   document.body.prepend(box);
 }
 makeBg();
+if (typeof document !== "undefined") {
+  document.querySelectorAll(".lang button").forEach(b => b.onclick = () => setLang(b.dataset.lang));
+  applyLang();
+}
 if (typeof module !== "undefined") module.exports = { applyChange, serialize, describe };
