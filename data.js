@@ -14,7 +14,7 @@ const LEVELS = [
   { id:"crazy-ii", name:"Crazy II", creator:"DavJT", diff:"insane", thumb:"thumbnails/CrazyII.png", link:"https://www.youtube.com/watch?v=49Kclbr9MQI" },
   { id:"anya-ii", name:"Anya II", creator:"Anya21", diff:"hard", thumb:"https://i.ytimg.com/vi/-hab-9xJ4OY/maxresdefault.jpg" },
   { id:"shitty-acheron-buff", name:"Shitty Acheron Buff", creator:"p1achu", diff:"unrated", thumb:"thumbnails/acheron_buffed.png", link:"https://www.youtube.com/watch?v=9-7eWPJNNeY&ab_channel=%5BGD%5DP1achu" },
-  { id:"crazy", name:"CraZy", creator:"DavJT", diff:"hard", thumb:"https://static.wikia.nocookie.net/geometry-dash-fan/images/c/cf/Maxresdefaultcrazylevel.jpg/revision/latest?cb=20220301022730" },
+  { id:"crazy", name:"CraZy", creator:"DavJT", diff:"hard", thumb:"https://i.redd.it/7b7ofk7ouwxd1.jpg" },
   { id:"azure", name:"Azure", creator:"eEddy", diff:"hard", thumb:"https://i.ytimg.com/vi/Vo9aGzciFxA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCKemj7gB6Ofe7RYYaAoHUrrPTGyw" },
   { id:"shitty-napalm", name:"Shitty Napalm", creator:"TrickGND", diff:"unrated", thumb:"thumbnails/napalm.png" },
   { id:"jawbreaker", name:"Jawbreaker", creator:"ZenthicAlpha", diff:"hard", thumb:"https://external-preview.redd.it/beat-jawbreaker-in-less-than-2-days-took-me-1374-attempts-v0-HIx1G9Kn6eFhW6D-i84Vs1nfGjcmQe-iGYRMKVhUMQI.png?format=pjpg&auto=webp&s=95f68778ffb832bd5c317e96c48749141ee88d09" },
